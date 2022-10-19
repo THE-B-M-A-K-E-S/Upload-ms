@@ -13,14 +13,9 @@ const multipartMiddleware = multipart({
 });
 
 app.post('/upload/', multipartMiddleware, (req, res) => {
-    if (!req.files) {
-        return res.status(200).json({ message: 'No file provided!' });
-    }
-    console.log(req.files);
-    res.json({
-        'message': 'File uploaded succesfully.',
-        'name': req.files.uploads[0].path.split("\\")[1]
-    });
+    if (!req.files)
+        return res.status(500).json({ message: 'No file provided!' });
+    return res.status(200).json(req.files.files?.path?.split("\\")[1]);
 });
 
 app.use('/upload/image', express.static('files'));
@@ -56,7 +51,7 @@ const client = new Eureka({
         requestRetryDelay: 2000,
     }
 })
-
+/*
 client.start( error => {
     console.log(error || "upload service registered")
-});
+});*/
