@@ -36,8 +36,8 @@ console.log('App Connected !');
 const client = new Eureka({
     instance: {
         app: 'upload-ms',
-        hostName: 'localhost',
-        ipAddr: '127.0.0.1',
+        hostName: '172.20.0.10',
+        ipAddr: '172.20.0.10',
         port: {
             '$': 8085,
             '@enabled': 'true',
@@ -49,7 +49,7 @@ const client = new Eureka({
         },
     },
     eureka: {
-        host: 'localhost',
+        host: '172.20.0.10',
         port: 8761,
         servicePath: '/eureka/apps/',
         maxRetries: 10,
